@@ -1,0 +1,51 @@
+﻿<Window
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="clr-namespace:ArgumentBasedMarkerTypeSelector"
+    x:Class="ArgumentBasedMarkerTypeSelector.MainWindow"
+    Title="How to Apply Different Markers Depending on Data" Height="500" Width="850">
+    <Window.Resources>
+        <local:MarkerDataTemplateSelector
+            x:Key="myDataTemplateSelector"/>
+        <dxc:BrushOverlayConverter
+            x:Key="brushOverlayConverter"/>
+        <DataTemplate
+            x:Key="squareModel">
+            <Rectangle Fill="Red"/>
+        </DataTemplate>
+        <DataTemplate
+            x:Key="circleModel">
+            <Ellipse
+                Fill="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                AncestorType={x:Type dxc:SeriesPointItemPresentation}}, 
+                Path=DataContext.PresentationData.PointColor, 
+                ConverterParameter=#FF6B6B6B, 
+                Converter={StaticResource brushOverlayConverter}}" />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <dxc:ChartControl>
+            <dxc:XYDiagram2D
+                EnableAxisXNavigation="True">
+                <dxc:LineSeries2D
+                    DataSource="{Binding DataItems, RelativeSource={RelativeSource AncestorType=Window, Mode=FindAncestor}}"
+                    MarkerVisible="True"
+                    ArgumentDataMember="DateTimeStamp"
+                    ValueDataMember="Value">
+                    <dxc:LineSeries2D.MarkerModel>
+                        <dxc:CustomMarker2DModel>
+                            <dxc:CustomMarker2DModel.PointTemplate>
+                                <ControlTemplate>
+                                    <ContentControl
+                                        Content="{Binding SeriesPoint}"
+                                        ContentTemplateSelector="{StaticResource myDataTemplateSelector}" />
+                                </ControlTemplate>
+                            </dxc:CustomMarker2DModel.PointTemplate>
+                        </dxc:CustomMarker2DModel>
+                    </dxc:LineSeries2D.MarkerModel>
+                </dxc:LineSeries2D>
+            </dxc:XYDiagram2D>
+        </dxc:ChartControl>
+    </Grid>
+</Window>
