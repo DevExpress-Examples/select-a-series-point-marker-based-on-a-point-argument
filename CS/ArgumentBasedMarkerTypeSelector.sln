@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.438
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArgumentBasedMarkerTypeSelector", "ArgumentBasedMarkerTypeSelector\ArgumentBasedMarkerTypeSelector.csproj", "{E34487EC-4D29-4290-8569-C4F31FCD0A9E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArgumentBasedMarkerTypeSelector", "ArgumentBasedMarkerTypeSelector.csproj", "{E34487EC-4D29-4290-8569-C4F31FCD0A9E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
