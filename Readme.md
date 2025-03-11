@@ -6,7 +6,7 @@
 
 # Chart for WPF - How to Select a Series Point Marker Based on a Point Argument
 
-This example specifies how to select a point marker type depending on a point argument.
+This example specifies the point marker type depending on the point argument.
 
 ![](Images/result.png)
 
